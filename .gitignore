@@ -1,0 +1,8 @@
+.terraform
+*.tfvars
+.vs/
+.vscode/
+bin/
+obj/
+out/
+*.user
