@@ -4,8 +4,8 @@ resource "aws_vpc" "terraform-eks-demo" {
   enable_dns_support = true
   tags = "${
     map(
-     "Name", "terraform-eks",
-     "kubernetes.io/cluster/terraform-eks-demo", "shared",
+     "Name", "${var.cluster-name}",
+     "kubernetes.io/cluster/${var.cluster-name}", "shared",
     )
   }"
 }

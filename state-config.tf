@@ -9,7 +9,7 @@ terraform =  {
   encrypt = "true"
   bucket = "eureka-eks-terraform-state"
   key = "terraform.tfstate" # state file to be created in the s3 bucket
-  dynamodb_table = "terraform-state-lock-dynamo"
+  // dynamodb_table = "terraform-state-lock-dynamo"
   profile = "eureka-terraform"
   region = "us-east-2"
   }

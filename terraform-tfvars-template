@@ -1,7 +1,9 @@
 # Fill in with proper values and then rename to terraform.tfvars
 
-aws_access_key  = ""
-aws_secret_key  = ""
+aws_access_key       = ""
+aws_secret_key       = ""
 
-aws_region      = ""
-subnet_count    = ""
+aws_region           = ""
+subnet_count         = ""
+keypair-name         = ""
+path_to_public_key   = ""
