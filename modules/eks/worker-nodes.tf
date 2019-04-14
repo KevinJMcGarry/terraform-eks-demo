@@ -31,7 +31,7 @@ USERDATA
 # create launch configuration for our ec2 nodes to use
 # using userdata we setup with xtrace
 resource "aws_launch_configuration" "tf_eks" {
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   iam_instance_profile        = "${aws_iam_instance_profile.node.name}"
   image_id                    = "${data.aws_ami.eks-worker.id}"
   instance_type               = "${var.instance_size}"
@@ -50,7 +50,7 @@ resource "aws_autoscaling_group" "tf_eks" {
   launch_configuration = "${aws_launch_configuration.tf_eks.id}"
   max_size             = "10"
   min_size             = 1
-  name                 = "terraform-tf-eks-nodes"
+  name                 = "terraform-eks-demo-worer-nodes"
   vpc_zone_identifier  = ["${var.app_subnet_ids}"]
 
   tag {

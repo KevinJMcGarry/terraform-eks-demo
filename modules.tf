@@ -19,7 +19,8 @@ module "eks" {
   app_subnet_ids    = "${module.network.app_subnet_ids}"
 
   // pass variables from .tfvars
-  cluster-name      = "${var.cluster-name}"
-  instance_size     = "${var.instance_size}"
-  keypair-name      = "${var.keypair-name}"
+  cluster-name                  = "${var.cluster-name}"
+  cluster_enabled_log_types     = "${var.cluster_enabled_log_types}"
+  instance_size                 = "${var.instance_size}"
+  keypair-name                  = "${var.keypair-name}"
 }

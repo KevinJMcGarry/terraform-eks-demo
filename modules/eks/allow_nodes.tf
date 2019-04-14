@@ -16,8 +16,9 @@
 # create the actual masters (control plane) cluster
 
 resource "aws_eks_cluster" "tf_eks" {
-  name            = "${var.cluster-name}"
-  role_arn        = "${aws_iam_role.tf-eks-master.arn}"
+  name                      = "${var.cluster-name}"
+  enabled_cluster_log_types = "${var.cluster_enabled_log_types}"
+  role_arn                  = "${aws_iam_role.tf-eks-master.arn}"
 
   vpc_config {
     security_group_ids = ["${aws_security_group.tf-eks-master.id}"]
@@ -35,7 +36,7 @@ resource "aws_eks_cluster" "tf_eks" {
 data "aws_eks_cluster" "tf_eks" {
   name = "${var.cluster-name}"
 
-  // depends_on = ["aws_eks_cluster.tf_eks"]
+  depends_on = ["aws_eks_cluster.tf_eks"]
 }
 
 data "aws_eks_cluster_auth" "tf_eks" {

@@ -37,3 +37,9 @@ variable "keypair-name" {
   type = "string"
   description = "Name of the keypair declared in AWS EC2, used to connect into your instances via SSH."
 }
+
+variable "cluster_enabled_log_types" {
+  default     = []
+  description = "A list of the desired control plane logging to enable. For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)"
+  type        = "list"
+}
