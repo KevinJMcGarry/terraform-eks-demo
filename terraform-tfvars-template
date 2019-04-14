@@ -3,7 +3,9 @@
 aws_access_key       = ""
 aws_secret_key       = ""
 
+cluster-name         = ""
 aws_region           = ""
 subnet_count         = ""
 keypair-name         = ""
 path_to_public_key   = ""
+instance_size        = ""

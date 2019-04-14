@@ -8,8 +8,26 @@
 
 // using aws cli to obtain an iam token that will allow us to connect to eks master
 // here we define a command as a data source
-data "external" "aws_iam_authenticator" {
+
+/* data "external" "aws_iam_authenticator" {
   program = ["sh", "-c", "aws-iam-authenticator token -i eks-demo-token | jq -r -c .status"]
+} */
+
+# create the actual masters (control plane) cluster
+
+resource "aws_eks_cluster" "tf_eks" {
+  name            = "${var.cluster-name}"
+  role_arn        = "${aws_iam_role.tf-eks-master.arn}"
+
+  vpc_config {
+    security_group_ids = ["${aws_security_group.tf-eks-master.id}"]
+    subnet_ids         = ["${var.app_subnet_ids}"] // application subnet ids
+  }
+
+  depends_on = [
+    "aws_iam_role_policy_attachment.tf-cluster-AmazonEKSClusterPolicy",
+    "aws_iam_role_policy_attachment.tf-cluster-AmazonEKSServicePolicy",
+  ]
 }
 
 // token and some other master info (endpoint address, certificate) to setup the provider to connect to kubernetes
@@ -17,7 +35,7 @@ data "external" "aws_iam_authenticator" {
 data "aws_eks_cluster" "tf_eks" {
   name = "${var.cluster-name}"
 
-  depends_on = ["aws_eks_cluster.tf_eks"]
+  // depends_on = ["aws_eks_cluster.tf_eks"]
 }
 
 data "aws_eks_cluster_auth" "tf_eks" {
@@ -36,7 +54,8 @@ provider "kubernetes" {
 
 // once connected to master, we now create/apply the config map, which allows our nodes to join/be managed by the cluster
 # Allow worker nodes to join cluster via config map
-resource "kubernetes_config_map" "aws_auth" {
+
+/* resource "kubernetes_config_map" "aws_auth" {
   metadata {
     name = "aws-auth"
     namespace = "kube-system"
@@ -52,4 +71,4 @@ EOF
   }
   depends_on = [
     "aws_eks_cluster.tf_eks"  ] 
-}
+} */

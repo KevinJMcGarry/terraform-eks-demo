@@ -8,7 +8,7 @@ variable "vpc_id" {
   description = "ID of the VPC used to setup the cluster."
 }
 
-variable "instance_type" {
+variable "instance_size" {
   type = "string"
   description = "Type/Size of the ec2 instance/s (eg m4.xlarge etc)."
 }

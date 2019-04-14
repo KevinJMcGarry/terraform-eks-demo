@@ -23,7 +23,7 @@ variable "subnet_count" {
     description = "The number of subnets we want to create per type to ensure high availability."
 }
 
-variable "instance_type" {
+variable "instance_size" {
     type        = "string"
     description = "The size/tye of the EC2 worker node instance/s (eg m4.xlarge)."
 }

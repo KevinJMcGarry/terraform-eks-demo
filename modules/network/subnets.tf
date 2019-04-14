@@ -8,7 +8,7 @@ resource "aws_subnet" "gateway" {
   vpc_id            = "${aws_vpc.terraform-eks-demo.id}"
   tags = "${
     map(
-     "Name", "terraform-eks-demo-public_subnet_gateway"
+     "Name", "${var.cluster-name}-public_subnet_gateway"
     )
   }"
 }
@@ -19,7 +19,7 @@ resource "aws_subnet" "application" {
   vpc_id            = "${aws_vpc.terraform-eks-demo.id}"
   tags = "${
     map(
-     "Name", "terraform-eks-demo-application_subnet",
+     "Name", "${var.cluster-name}-application_subnet",
      "kubernetes.io/cluster/${var.cluster-name}", "shared",
     )
   }"
@@ -33,7 +33,7 @@ resource "aws_subnet" "database" {
   
   tags = "${
     map(
-     "Name", "terraform-eks-demo-database_subnet"
+     "Name", "${var.cluster-name}-database_subnet"
     )
   }"
 }

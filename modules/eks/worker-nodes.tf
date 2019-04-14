@@ -31,11 +31,11 @@ USERDATA
 # create launch configuration for our ec2 nodes to use
 # using userdata we setup with xtrace
 resource "aws_launch_configuration" "tf_eks" {
-  associate_public_ip_address = false
+  associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.node.name}"
   image_id                    = "${data.aws_ami.eks-worker.id}"
-  instance_type               = "m4.large"
-  name_prefix                 = "terraform-demo-eks"
+  instance_type               = "${var.instance_size}"
+  name_prefix                 = "${var.cluster-name}"
   security_groups             = ["${aws_security_group.tf-eks-node.id}"]
   user_data_base64            = "${base64encode(local.tf-eks-node-userdata)}"
   key_name                    = "${var.keypair-name}"
@@ -55,7 +55,7 @@ resource "aws_autoscaling_group" "tf_eks" {
 
   tag {
     key                 = "Name"
-    value               = "terraform-eks-demo-nodes"
+    value               = "${var.cluster-name}-nodes"
     propagate_at_launch = true
   }
 

@@ -13,6 +13,6 @@ resource "aws_security_group" "tf-eks-master" {
     }
     
     tags {
-        Name = "terraform-eks-demo"
+        Name = "${var.cluster-name}"
     }
 }

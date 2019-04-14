@@ -20,6 +20,6 @@ module "eks" {
 
   // pass variables from .tfvars
   cluster-name      = "${var.cluster-name}"
-  instance_type     = "${var.instance_type}"
+  instance_size     = "${var.instance_size}"
   keypair-name      = "${var.keypair-name}"
 }

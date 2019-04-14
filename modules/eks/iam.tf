@@ -1,6 +1,6 @@
 # Setup for IAM role needed to setup an EKS cluster (eks cluster master nodes)
 resource "aws_iam_role" "tf-eks-master" {
-  name = "terraform-eks-demo-master-role"
+  name = "${var.cluster-name}-master-role"
 
   assume_role_policy = <<POLICY
 {
@@ -33,7 +33,7 @@ resource "aws_iam_role_policy_attachment" "tf-cluster-AmazonEKSServicePolicy" {
 # This allows worker nodes to join the EKS cluster (control plane)
 
 resource "aws_iam_role" "tf-eks-node" {
-  name = "tf-eks-demo-node-role"
+  name = "${var.cluster-name}-node-role"
 
   assume_role_policy = <<POLICY
 {
