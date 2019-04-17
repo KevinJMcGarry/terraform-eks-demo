@@ -54,9 +54,9 @@ provider "kubernetes" {
 
 
 // once connected to master, we now create/apply the config map, which allows our nodes to join/be managed by the cluster
-# Allow worker nodes to join cluster via config map
+// Allow worker nodes to join cluster via config map
 
-/* resource "kubernetes_config_map" "aws_auth" {
+resource "kubernetes_config_map" "aws_auth" {
   metadata {
     name = "aws-auth"
     namespace = "kube-system"
@@ -72,4 +72,4 @@ EOF
   }
   depends_on = [
     "aws_eks_cluster.tf_eks"  ] 
-} */
+}

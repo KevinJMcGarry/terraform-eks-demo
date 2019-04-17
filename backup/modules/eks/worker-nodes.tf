@@ -12,6 +12,8 @@ data "aws_ami" "eks-worker" {
   owners      = ["602401143452"] # This is the AWS account that owns the image (AWS EKS team, not your own account!)
 }
 
+data "aws_region" "current" {}
+
 # Is provided in demo code, no idea what it's used for though! TODO: DELETE
 # data "aws_region" "current" {}
 
@@ -50,7 +52,7 @@ resource "aws_autoscaling_group" "tf_eks" {
   launch_configuration = "${aws_launch_configuration.tf_eks.id}"
   max_size             = "10"
   min_size             = 1
-  name                 = "terraform-eks-demo-worer-nodes"
+  name                 = "terraform-eks-demo-worker-nodes"
   vpc_zone_identifier  = ["${var.app_subnet_ids}"]
 
   tag {
