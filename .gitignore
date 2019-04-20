@@ -1,4 +1,4 @@
-.terraform
+.terraform/
 *.tfvars
 .vs/
 .vscode/
@@ -6,3 +6,6 @@ bin/
 obj/
 out/
 *.user
+
+# ignore all occurrences of terraform.tfstate and terraform.tfstate.backup
+terraform.**  
