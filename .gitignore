@@ -9,3 +9,6 @@ out/
 
 # ignore all occurrences of terraform.tfstate and terraform.tfstate.backup
 terraform.**  
+# ignore auto-created k8s config files during the terraform apply stage
+config-map-**
+kubeconfig_**

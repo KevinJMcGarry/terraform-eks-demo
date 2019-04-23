@@ -103,7 +103,7 @@ variable "worker_groups" {
 variable "worker_group_count" {
   description = "The number of maps contained within the worker_groups list."
   type        = "string"
-  default     = "1"
+  default     = "2"
 }
 
 variable "workers_group_defaults" {
@@ -256,4 +256,9 @@ variable "cluster_endpoint_private_access" {
 variable "cluster_endpoint_public_access" {
   description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled."
   default     = true
+}
+
+variable "key_name" {
+  type = "string"
+  description = "Name of the keypair declared in AWS EC2, used to connect into your instances via SSH."
 }

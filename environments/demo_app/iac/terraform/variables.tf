@@ -86,6 +86,16 @@ variable "cidr" {
   type        = "string"
 }
 
+variable "key_name" {
+  type = "string"
+  description = "Name of the keypair declared in AWS EC2, used to connect into your instances via SSH."
+}
+
+variable "path_to_public_key" {
+  type = "string"
+  description = "path to the public key you will be using for shelling into the ec2 nodes. (eg '~/.ssh/mypubkey.pub')"
+}
+
 /* variable "aws_access_key" {
     type        = "string"
     description = "The account identification key used by your Terraform client."

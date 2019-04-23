@@ -74,7 +74,8 @@ locals {
       asg_min_size         = 1
     },
     {
-      # This will launch an0ther autoscaling group with only On-Demand instances
+      # This will launch another autoscaling group with only On-Demand instances
+      // see module eks worker_group_count, this number must align with number of worker_groups you define
       instance_type        = "c5.large"
       name                 = "onDemand_Group_B"
       additional_userdata  = "echo something in here"

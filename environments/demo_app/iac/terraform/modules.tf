@@ -16,14 +16,14 @@ module "vpc" {
 }
 
 module "eks" {
-  source                               = "../.."
+  source                               = "../../../../eks/"
   cluster_name                         = "${local.cluster_name}"
   subnets                              = ["${module.vpc.private_subnets}"]
   tags                                 = "${local.tags}"
   vpc_id                               = "${module.vpc.vpc_id}"
   worker_groups                        = "${local.worker_groups}"
   worker_groups_launch_template        = "${local.worker_groups_launch_template}"
-  worker_group_count                   = "1"
+  worker_group_count                   = "2"
   worker_group_launch_template_count   = "1"
   worker_additional_security_group_ids = ["${aws_security_group.all_worker_mgmt.id}"]
   map_roles                            = "${var.map_roles}"
@@ -33,6 +33,7 @@ module "eks" {
   map_accounts                         = "${var.map_accounts}"
   map_accounts_count                   = "${var.map_accounts_count}"
   cluster_enabled_log_types            = "${var.cluster_enabled_log_types}"
+  key_name                             = "${var.key_name}"
 }
 
 
