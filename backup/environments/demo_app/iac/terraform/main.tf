@@ -5,7 +5,7 @@ terraform {
 provider "aws" {
   //access_key = "${var.aws_access_key}"
   //secret_key = "${var.aws_secret_key}"
-  version = ">= 2.6.0"
+  version = ">= 2.8.0"
   region  = "${var.region}"
 }
 
@@ -65,13 +65,13 @@ locals {
   worker_groups = [
     {
       # This will launch an autoscaling group with only On-Demand instances
-      instance_type        = "t2.small"
+      instance_type        = "t3.medium"
       name                 = "onDemand_Group_A"
       additional_userdata  = "echo something in here"
       subnets              = "${join(",", module.vpc.private_subnets)}"
-      asg_desired_capacity = 1
+      asg_desired_capacity = 3
       asg_max_size         = 10
-      asg_min_size         = 1
+      asg_min_size         = 3
     },
     {
       # This will launch another autoscaling group with only On-Demand instances
@@ -90,7 +90,7 @@ locals {
     {
       # This will launch an autoscaling group with only Spot Fleet instances
       instance_type                            = "t2.small"
-      name = "spotFleet_Group_A"
+      name                                     = "SpotFleet_Group_A"
       additional_userdata                      = "echo something in here"
       subnets                                  = "${join(",", module.vpc.private_subnets)}"
       additional_security_group_ids            = "${aws_security_group.worker_group_mgmt_one.id},${aws_security_group.worker_group_mgmt_two.id}"

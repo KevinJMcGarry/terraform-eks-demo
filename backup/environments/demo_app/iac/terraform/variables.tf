@@ -96,6 +96,11 @@ variable "path_to_public_key" {
   description = "path to the public key you will be using for shelling into the ec2 nodes. (eg '~/.ssh/mypubkey.pub')"
 }
 
+variable "vpc_module_version" {
+  type = "string"
+  description = "specify the release version of the module see - see https://github.com/terraform-aws-modules/terraform-aws-vpc/releases for the latest version "
+}
+
 /* variable "aws_access_key" {
     type        = "string"
     description = "The account identification key used by your Terraform client."
