@@ -95,10 +95,10 @@ module "vpc" {
   azs                  = data.aws_availability_zones.available.names
   private_subnets      = "${var.private_subnets}"  // added kjm
   public_subnets       = "${var.public_subnets}"  // added kjm
-  enable_nat_gateway = true  // added kjm
-  single_nat_gateway = true  // added kjm - share a single nat gateway amongst all private subnets
+  enable_nat_gateway   = true  // added kjm
+  single_nat_gateway   = true  // added kjm - share a single nat gateway amongst all private subnets
   enable_dns_hostnames = true
-  enable_dns_support = true  // added kjm
+  enable_dns_support   = true  // added kjm
 
   tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
