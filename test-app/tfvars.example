@@ -1,0 +1,11 @@
+#aws_access_key                 = ""
+#aws_secret_key                 = ""
+
+cluster-name                   = "example-name"
+region                         = "us-east-2"
+cluster_enabled_log_types      = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+cidr                           = "10.22.0.0/16"
+public_subnets                 = ["10.22.4.0/24", "10.22.5.0/24", "10.22.6.0/24"]
+private_subnets                = ["10.22.1.0/24", "10.22.2.0/24", "10.22.3.0/24"]
+
+#
