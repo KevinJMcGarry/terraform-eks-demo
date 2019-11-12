@@ -118,7 +118,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source       = "../modules/eks/"
+  source       = "../../modules/eks/"
   cluster_name = "${local.cluster_name}"  // added kjm
   subnets      = module.vpc.private_subnets  //edited kjm
   vpc_id       = module.vpc.vpc_id

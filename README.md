@@ -12,9 +12,9 @@ This is a demo project to showcase the ease of using terraform to spin up an EKS
 
 ## Building
 
-- under the /test-app/ folder, edit the tfvars.example file with the appropriate values and save it as terraform.tfvars (this file should be excluded from github via .gitignore) 
+- under the /test-app/terraform/ folder, edit the tfvars.example file with the appropriate values and save it as terraform.tfvars (this file should be excluded from github via .gitignore) 
 **NOTE:** some default values were left in the file an example
-- terraform apply the terraform code
+- terraform init, plan, and apply the terraform code
 - update your kubeconfig file with the new eks cluster 
 
 ## Community, discussion, contribution, and support
