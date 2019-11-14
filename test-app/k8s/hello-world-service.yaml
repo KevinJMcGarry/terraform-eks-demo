@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-service
+  namespace: qa
+  labels:
+    env: qa
+spec:
+  type: NodePort
+  selector: # which pod to select
+    app: hello-world-pod # pod name
+  ports:
+  - protocol: TCP
+    port: 443
+    targetPort: 80
